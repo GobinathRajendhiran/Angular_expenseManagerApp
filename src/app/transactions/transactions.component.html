@@ -1,0 +1,63 @@
+<div class="container mainContainer">
+    <div class="row">
+        <div class="formLeftSectionForTransaction col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">
+
+            <div [formGroup]="transactionForm" class="transactionFormTag">
+                <label for="description">Description</label>
+                <textarea class="form-control" type="text" id="description" formControlName="description"></textarea> <br>
+
+                <label for="amount">Amount</label>
+                <input class="form-control" type="number" id="amount" formControlName="amount"> <br>
+
+                <label for="TransactionDate">Date</label>
+                <input class="form-control" type="date" id="TransactionDate" formControlName="date"> <br>
+
+                <label for="transactionTypeSelectTag">Type</label>
+                <select class="form-control" name="transactionTypeSelectTag" id="transactionTypeSelectTag" formControlName="type">
+                    <option value="credit">Credit</option>
+                    <option value="debit">Debit</option>
+                </select>
+
+                <label for="Transactioncategory">Category</label>
+                <select class="form-control" name="Transactioncategory" id="Transactioncategory" formControlName="category">
+                    <option value="salary">Salary</option>
+                    <option value="groceries">Groceries</option>
+                    <option value="rent">Rent</option>
+                    <option value="petrol">Petrol</option>
+                    <option value="food">Food</option>
+                    <option value="others">Others</option>
+                </select>
+            </div>
+            <div class="d-flex justify-content-center mt-4">
+                <button class="btn btn-secondary" (click)="clearTransactionForm()">clear</button>
+                <button *ngIf="!updateTransactionClick" class="btn btn-primary" style="margin-left: 10px;" [disabled]="transactionForm.invalid" (click)="addTransaction()">Add Transaction</button>
+                <button *ngIf="updateTransactionClick" class="btn btn-primary" style="margin-left: 10px;" [disabled]="transactionForm.invalid" (click)="updateTransaction()">Update Transaction</button>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 transactionListMainSection">
+            <div class="row transactionLoopSection" *ngFor="let entry of transactions">
+                <div class="col-12">
+                    <div class="transactionDetailsDescription">(DATE : {{entry.date}}) <br> Description : {{entry.description}}</div>
+                </div>
+                <div class="col-12">
+                    <div class="mb-2">
+                        <span class="text-white transactionDetailsTypeSec" [ngClass]="entry.type == 'credit' ? 'bg-success' : 'bg-danger'">{{entry.type}}</span>
+                        <span>Type : {{entry.category}}</span>
+                        <div class="transactionDetailsAmountSection">₹ {{entry.amount}}</div>
+                    </div>
+                </div>
+                <div class="col-12 d-flex">
+                    <button class="formEditButton col-6 btn btn-success" (click)="editTransactionData(entry)">Edit</button>
+                    <button class="formDeleteButton col-6 btn btn-danger" (click)="deleteTransaction(entry.id)">Delete</button>
+                </div>
+            </div>
+            <div *ngIf="transactions.length == 0" style="margin-left: 30%;">
+                <b>No Transactions available</b>
+            </div>
+        </div>
+    </div>
+    <h1>Chart of Transaction</h1>
+    <div class="chart-container">
+        <canvas  id="MyChart" ></canvas>
+    </div>
+</div>

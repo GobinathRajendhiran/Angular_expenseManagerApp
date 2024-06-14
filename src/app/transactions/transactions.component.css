@@ -1,0 +1,57 @@
+.mainContainer {
+    margin-top: 50px;
+}
+
+.formLeftSectionForTransaction {
+    border: 1px solid #666666;
+    padding: 30px;
+}
+
+.transactionFormTag {
+    display: flex;
+    flex-direction: column;
+}
+
+.transactionLoopSection {
+    border: 1px solid #8f8f8f;
+    padding: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.transactionListMainSection {
+    overflow: auto;
+    height: 600px;
+    overflow-x: hidden;
+    border: 1px solid #666666;
+}
+
+.formEditButton {
+    margin-right: 5px;
+}
+
+.transactionDetailsAmountSection {
+    border: 1px solid #00a7a5;
+    width: max-content;
+    border-radius: 5px;
+    padding: 6px;
+    background: #eee;
+    color: black;
+    font-weight: bold;
+    margin-top: 4px;
+}
+
+.transactionDetailsDescription {
+    max-height: 60px;
+    overflow: auto;
+    margin-bottom: 15px;
+}
+
+.transactionDetailsTypeSec {
+    width: max-content;
+    padding: 3px 6px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
